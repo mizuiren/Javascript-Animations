@@ -1,0 +1,78 @@
+<html>
+<head>
+	<title>Lucky Circle</title>
+	<meta charset="UTF-8" />
+	<style>
+		.lucky-circle{
+			width:150px;
+			height:150px;
+			background: gray;
+			border-radius: 50%;
+			position:absolute;
+			bottom:0;
+		}
+		#page467{
+			background: rgba(0, 0, 0, 0.8);
+			position: fixed;
+			color:white;
+			top: 0;
+			left:0;
+			width: 100%;
+			height:100%;
+		}
+	</style>
+</head>
+<body>
+	<div id="page467">
+		<span>按Esc键退出,按其它任意键生成圆。</span>
+	</div>
+<script>
+function creatDiv(r_w){
+	var randomWidth=parseInt(Math.random()*r_w+50);
+	var container=document.getElementById("page467");
+	var allEle=container.getElementsByTagName("*");
+	var div=document.createElement("div");
+	var bottom=parseInt(Math.random()*(container.clientHeight-randomWidth));
+	var left=parseInt(Math.random()*(container.clientWidth-randomWidth));
+
+	div.setAttribute("class","lucky-circle");
+	div.setAttribute("data-left",left);
+	div.setAttribute("data-bottom",bottom);
+
+	div.style.bottom=bottom+"px";
+	div.style.left=left+"px";
+	div.style.backgroundColor="rgb("+parseInt(Math.random()*255)+","+parseInt(Math.random()*255)+","+parseInt(Math.random()*255)+")";
+	div.style.width=randomWidth+"px";
+	div.style.height=randomWidth+"px";
+
+	for(let i=allEle.length-1;i>0;i--){
+		if(allEle[i].getAttribute("data-left")){
+			let tLeft=parseInt(allEle[i].getAttribute("data-left"));
+			let tBottom=parseInt(allEle[i].getAttribute("data-bottom"));
+			let width=allEle[i].offsetWidth;
+			let height=allEle[i].offsetHeight;
+			let point_x_1=tLeft+width/2;
+			let point_y_1=tBottom+height/2;
+			let point_x_2=left+randomWidth/2;
+			let point_y_2=bottom+randomWidth/2;
+			let distant= Math.sqrt(Math.pow(Math.abs(point_x_1-point_x_2),2)+Math.pow(Math.abs(point_y_1-point_y_2),2));
+			if(distant<width/2+randomWidth/2){
+				allEle[i].parentNode.removeChild(allEle[i]);
+			}
+		}
+	}
+	document.getElementById("page467").appendChild(div);
+}
+document.onkeydown=function(){
+	creatDiv(150);
+};
+
+document.onkeyup=function(e){
+	var e=e||window.event;
+	if(e.keyCode===27){
+		document.getElementById("page467").style.display="none";
+	}
+};
+</script>
+</body>
+</html>
