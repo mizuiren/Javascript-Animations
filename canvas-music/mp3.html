@@ -226,7 +226,7 @@
 				context.arc(thisBall.x,height-thisBall.y,radius,0,2*Math.PI);
 				thisBall.y+=thisBall.speed;
 
-				thisBall.speed-=0.2;
+				thisBall.speed-=0.3;
 
 				if(thisBall.speed<=0){
 					thisBall.speed=-Math.abs(thisBall.speed);
@@ -234,9 +234,9 @@
 				if(thisBall.y<=radius){
 					thisBall.y=radius;
 					thisBall.speed=Math.abs(thisBall.speed)-Math.abs(thisBall.speed)/4;
-					if(thisBall.y<=radius+5){
+					if(thisBall.y<=radius+5 && thisBall.dataY>150){
 					//if(Math.abs(thisBall.speed)<=1){//This is another effect, please close the first line under parent parent "if" when open this line;
-						thisBall.speed=thisBall.dataY*8/220;
+						thisBall.speed=thisBall.dataY*12/220;
 					}
 				}else if(thisBall.y>=height-radius){
 					thisBall.y=height-radius;
@@ -259,7 +259,7 @@
 		return function(data){
 			for(var i=0;i<count;i++){
 				thisCap=data[start+i*dataGap];
-				lineHeight=parseInt(height-thisCap-thisCap*0.7);
+				lineHeight=parseInt(height-(thisCap+thisCap*0.8));
 				/*保存帽头数组*/
 				if(capArr[i]){
 					if(capArr[i]>lineHeight){
@@ -341,7 +341,7 @@
 		}
 	}
 
-	function addClick(){
+	function addEvent(){
 		var type=document.getElementById("swith-btn").getElementsByTagName("input");
 		var span=document.getElementById("swith-btn").getElementsByTagName("span");
 		for(var i=0;i<type.length;i++){
@@ -364,6 +364,9 @@
 				}
 			})(i)
 		}
+		audio.addEventListener('ended', function () {
+		    context.clearRect(0, 0, width, height);
+		}, false);
 	}
 
 	var drawFires,drawColumns,drawCircles,drawLights,timer;
@@ -373,7 +376,7 @@
 		drawSpeakers=drawSpeaker();
 		drawLights=drawLight();
 		drawBalls=drawBall();
-		addClick();
+		addEvent();
 		timer=setInterval(function(){getSource(1)},10);
 	}
 
