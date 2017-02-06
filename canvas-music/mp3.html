@@ -203,9 +203,9 @@
 
 	function drawBall(){
 		var ballArr=[],start=102,radius=10,gradient;
-		for(var i=0,len=width/28;i<len;i++){
+		for(var i=1,len=parseInt(width/(radius*2+10));i<len;i++){
 			ballArr.push({
-				x:i+25*i+25,
+				x:(radius*2+10)*i,
 				y:radius,
 				speed:0
 			});
