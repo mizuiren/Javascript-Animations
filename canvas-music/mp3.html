@@ -39,7 +39,7 @@
 		<audio src="http:cctv3.qiniudn.com/tbhdqx.mp3" controls="controls" autoplay="autoplay" id="mp3" crossOrigin="anonymous"></audio>
 	</div>
 <div id="swith-btn">
-	<span><input type="radio" name="drawstyle" value="1">柱状</span>
+	<span><input type="radio" name="drawstyle" value="1" checked="checked">柱状</span>
 	<span><input type="radio" name="drawstyle" value="2">音响</span>
 	<span><input type="radio" name="drawstyle" value="4">火焰</span>
 	<span><input type="radio" name="drawstyle" value="5">乒乓球</span>
@@ -103,6 +103,7 @@
 
 			if(i==1){
 				context.beginPath();
+				context.globalCompositeOperation = "source-over";
 				gradient= context.createRadialGradient(x, y, r, x, y, border);
 				gradient.addColorStop(0.2,'rgb(5,5,3)');
 				gradient.addColorStop(0.5,'rgb(41,42,37)');
@@ -123,17 +124,17 @@
 			}else{
 				context.beginPath();
 				if(i==4){
-					gradient= context.createRadialGradient(x, y, 3, x, y, r);
-					gradient.addColorStop(0.2,'rgb(125,125,125)');
-					gradient.addColorStop(0.9,'rgb(25,25,25)');
-					context.shadowOffsetX = 0;
-				  context.shadowOffsetY = 0;
-				  context.shadowBlur = 15;
-				  context.shadowColor = 'rgba(0, 0, 0, 0.8)';
+					gradient= context.createRadialGradient(x, y, 1, x, y, r);
+					gradient.addColorStop(0,'rgb(125,125,125)');
+					gradient.addColorStop(0.8,'rgb(25,25,25)');
 				}else{
 					gradient= context.createRadialGradient(x, y, r/2, x, y, r);
 					gradient.addColorStop(0,'rgb(36,37,32)');
 				  gradient.addColorStop(1,'rgb(27,25,29)');
+					context.shadowOffsetX = 0;
+				  context.shadowOffsetY = 0;
+				  context.shadowBlur = 15;
+				  context.shadowColor = 'rgba(0, 0, 0, 0.8)';
 				}
 				context.fillStyle = gradient;
 				context.arc(x, y, r, 0, Math.PI*2, true);
@@ -249,11 +250,11 @@
 
 	function drawColumn(){
 		var gradient,lineHeight,capArr=[],
-		start=102,//从X轴何处坐标开始画
+		start=100,//从X轴何处坐标开始画
 		lineWidth=3,//柱体宽度
 		lineGap=6,//柱体间距
 		dataGap=10;//每隔多少取一个数据用于绘画，意抽取片段数据来反映整体频谱规律
-		var count=(width-start*2)/(lineWidth+lineGap);
+		var count=parseInt((width-start*2)/(lineWidth+lineGap));
 		var thisCap,drawX;
 		return function(data){
 			for(var i=0;i<count;i++){
@@ -315,12 +316,11 @@
 
 	  return function(data){
 			var parseData=Number((data/1000+0.2).toFixed(2));
-
-			context.globalCompositeOperation = "source-over";
-			context.globalCompositeOperation = "lighter";
 			for(var i = 0; i < particles.length; i++){
 				var p = particles[i];
 				context.beginPath();
+				context.compositeOperation = "source-over";
+				context.globalCompositeOperation = "lighter";
 				p.opacity = Math.round(p.death/p.life*100)/100;
 				var gradient = context.createRadialGradient(p.location.x, p.location.y, 0, p.location.x, p.location.y, p.radius);
 				gradient.addColorStop(0, "rgba("+p.r+", "+p.g+", "+p.b+", "+p.opacity+")");
@@ -355,7 +355,7 @@
 			(function(i){
 				span[i].onclick=function(){
 					var input=span[i].getElementsByTagName("input")[0];
-					input.setAttribute("checked",true);
+					input.checked=true;
 					if(input.fireEvent) {
 	            input.fireEvent('onchange');
 	        } else if(input.onchange){
@@ -374,7 +374,7 @@
 		drawLights=drawLight();
 		drawBalls=drawBall();
 		addClick();
-		timer=setInterval(function(){getSource(5)},10);
+		timer=setInterval(function(){getSource(1)},10);
 	}
 
 	init();
