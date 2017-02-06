@@ -365,7 +365,26 @@
 			})(i)
 		}
 		audio.addEventListener('ended', function () {
-		    context.clearRect(0, 0, width, height);
+			with(context){
+				clearRect(0, 0, width, height);
+				textBaseline = 'middle';
+ 				textAlign = 'center';
+				strokeStyle = 'cornflowerblue';
+
+				beginPath();
+				fillStyle = "#f00";
+				font = '68px Helvetica';
+				fillText("秋叶网络博客", width/2, 180);
+				strokeText("秋叶网络博客", width/2, 180);
+ 				closePath();
+
+				beginPath();
+				fillStyle = "blue";
+				font = '48px Helvetica';
+    		fillText("www.mizuiren.com", width/2, 250);
+				strokeText("www.mizuiren.com", width/2, 250)
+				closePath();
+			}
 		}, false);
 	}
 
