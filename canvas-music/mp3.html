@@ -5,7 +5,7 @@
 <style>
 #canvas{
 	background: black;
-	border:1px solid #000;
+	border-bottom: 1px solid #ccc;
 }
 #qiuyemusic{
 	text-align: center;
@@ -36,7 +36,7 @@
 			您的浏览器不支持canvas，请更换高级版的浏览器！
 		</canvas>
 		<br/>
-		<audio src="http:cctv3.qiniudn.com/hn.ogg" controls="controls" autoplay="autoplay" id="mp3" crossOrigin="anonymous"></audio>
+		<audio src="http:cctv3.qiniudn.com/tbhdqx.mp3" controls="controls" autoplay="autoplay" id="mp3" crossOrigin="anonymous"></audio>
 	</div>
 <div id="swith-btn">
 	<span><input type="radio" name="drawstyle" value="1">柱状</span>
@@ -215,21 +215,29 @@
 				var thisBall=ballArr[i];
 				thisBall.dataY=data[102+i*10];
 				context.beginPath();
-
-				if(thisBall.y<=radius && thisBall.dataY>thisBall.y && Math.abs(thisBall.speed)<=0.2){
-					thisBall.y=thisBall.dataY>=radius*2?(thisBall.dataY-radius):radius;
-				}
-
 				gradient = context.createRadialGradient(thisBall.x, height-thisBall.y, 0, thisBall.x, height-thisBall.y, radius);
         gradient.addColorStop(0.2, 'rgb(255,0,0)');
         gradient.addColorStop(1, 'rgb(50,0,0)');
         context.fillStyle = gradient;
-				thisBall.speed-=0.2;
-				if(thisBall.y<radius){
-					thisBall.speed=-thisBall.speed-Math.abs(thisBall.speed)/2;
-				}
-				thisBall.y+=thisBall.speed;
+
 				context.arc(thisBall.x,height-thisBall.y,radius,0,2*Math.PI);
+				thisBall.y+=thisBall.speed;
+
+				thisBall.speed-=0.2;
+
+				if(thisBall.speed<=0){
+					thisBall.speed=-Math.abs(thisBall.speed);
+				}
+				if(thisBall.y<=radius){
+					thisBall.y=radius;
+					thisBall.speed=Math.abs(thisBall.speed)-Math.abs(thisBall.speed)/4;
+					if(thisBall.y<=radius+5){
+					//if(Math.abs(thisBall.speed)<=1){//This is another effect, please close the first line under parent parent "if" when open this line;
+						thisBall.speed=thisBall.dataY*8/220;
+					}
+				}else if(thisBall.y>=height-radius){
+					thisBall.y=height-radius;
+				}
 				context.fill();
 				context.closePath();
 			}
