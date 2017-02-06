@@ -65,7 +65,9 @@
 			source.connect(analyser);//截取音频信号
 
 	function getSource(draw){
-		if(audio.paused){return false;}
+		if(audio.paused){
+			return false;
+		}
 		var data = new Uint8Array(analyser.frequencyBinCount);
 				analyser.getByteFrequencyData(data);//得到音频能量值
 		var playerTimeDomainData = new Uint8Array(analyser.fftSize);
@@ -124,10 +126,10 @@
 					gradient= context.createRadialGradient(x, y, 3, x, y, r);
 					gradient.addColorStop(0.2,'rgb(125,125,125)');
 					gradient.addColorStop(0.9,'rgb(25,25,25)');
-					/*context.shadowOffsetX = 0;
+					context.shadowOffsetX = 0;
 				  context.shadowOffsetY = 0;
 				  context.shadowBlur = 15;
-				  context.shadowColor = 'rgba(0, 0, 0, 0.8)';*/
+				  context.shadowColor = 'rgba(0, 0, 0, 0.8)';
 				}else{
 					gradient= context.createRadialGradient(x, y, r/2, x, y, r);
 					gradient.addColorStop(0,'rgb(36,37,32)');
@@ -246,10 +248,17 @@
 
 
 	function drawColumn(){
-		var gradient,lineHeight,capArr=[],start=102,lineWidth=3;
+		var gradient,lineHeight,capArr=[],
+		start=102,//从X轴何处坐标开始画
+		lineWidth=3,//柱体宽度
+		lineGap=6,//柱体间距
+		dataGap=10;//每隔多少取一个数据用于绘画，意抽取片段数据来反映整体频谱规律
+		var count=(width-start*2)/(lineWidth+lineGap);
+		var thisCap,drawX;
 		return function(data){
-			for(var i=start,len=data.length/2;i<len;i+=10){
-				lineHeight=parseInt(height-data[i]-data[i]*0.7);
+			for(var i=0;i<count;i++){
+				thisCap=data[start+i*dataGap];
+				lineHeight=parseInt(height-thisCap-thisCap*0.7);
 				/*保存帽头数组*/
 				if(capArr[i]){
 					if(capArr[i]>lineHeight){
@@ -259,15 +268,16 @@
 					capArr[i]=lineHeight;
 				}
 				context.lineWidth=lineWidth;
-				gradient = context.createLinearGradient(i, height, i, lineHeight);
+				drawX=start+(lineWidth+lineGap)*i;
+				gradient = context.createLinearGradient(drawX, height, drawX, lineHeight);
 				gradient.addColorStop(1, 'rgba(255,0,0,.5)');
 				gradient.addColorStop(0.5, 'rgb(55,255,0)');
 				gradient.addColorStop(0, 'rgba(255,255,255,.5)');
 				/*画频谱柱条*/
 				context.beginPath();
 				context.strokeStyle = gradient;
-				context.moveTo(i,height);
-				context.lineTo(i,lineHeight);
+				context.moveTo(drawX,height);
+				context.lineTo(drawX,lineHeight);
 
 				context.stroke();
 				context.closePath();
@@ -275,13 +285,12 @@
 				context.beginPath();
 				context.lineWidth=1;
 				context.fillStyle = "rgba(255,255,255,.5)";
-				context.arc(i,capArr[i]-3,lineWidth/2,0,Math.PI*2,true);
+				context.arc(drawX,capArr[i]-3,lineWidth/2,0,Math.PI*2,true);
 				context.fill();
 				context.closePath();
 				capArr[i]+=0.5
 			}
 		}
-
 	}
 
 	function drawFire(){
