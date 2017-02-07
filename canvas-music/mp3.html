@@ -216,7 +216,7 @@
 		return function(data){
 			for(var i=0;i<ballArr.length;i++){
 				var thisBall=ballArr[i];
-				thisBall.dataY=data[102+i*10];
+				thisBall.dataY=data[start+i+3];
 				context.beginPath();
 				gradient = context.createRadialGradient(thisBall.x, height-thisBall.y, 0, thisBall.x, height-thisBall.y, radius);
         gradient.addColorStop(0.2, 'rgb(255,0,0)');
