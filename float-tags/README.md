@@ -1,2 +1,2 @@
-# Lucky Circle
-原生Javascript操作Dom生成随机大小，随机颜色，不重叠的小圆圆，按下键盘飞起来~。
+# Float Tags
+采用Javascript和jq高仿腾讯qq资料卡印象标签特效
