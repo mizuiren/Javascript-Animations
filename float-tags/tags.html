@@ -1,0 +1,571 @@
+<html>
+<head>
+	<title>svg练习</title>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" type="text/css" href="s-ui/dist/semantic.min.css"/>
+<style>
+#impression{
+	width:400px;
+	height:600px;
+	position: relative;
+	margin:0 auto;
+	border: 2px solid #C2BABA;
+}
+@media screen and (max-width:500px){
+        #impression{width:95%;}
+}
+.impress-bg,.impress-content {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width:400px;
+	height:600px;
+}
+.impress-bg{
+	background: #73b3b3 url("http://cctv2.qiniudn.com/datou.jpg") no-repeat;
+	background-size: cover;
+	-webkit-filter: blur(6px);
+	-moz-filter: blur(6px);
+	-o-filter: blur(6px);
+	-ms-filter: blur(6px);
+	filter: blur(6px);
+}
+.main-img .center{
+	position: absolute;
+	left:50%;
+	top:50%;
+	margin-top:-50px;
+	border-radius: 50%;
+	transform:translate(-50%,-50%);
+	-webkit-transform:translate(-50%,-50%);
+	-o-transform:translate(-50%,-50%);
+	-ms-transform:translate(-50%,-50%);
+}
+.main-img img{
+	width:100px;
+	height:100px;
+}
+.main-img .opacity-div{
+	width:140px;
+	height:140px;
+	background: rgba(255,255,255,0.5);
+}
+@keyframes poup1{
+	0%{width:140px;height:140px;opacity: 1;}
+	100%{width:160px;height:160px;opacity: 0;}
+}
+@keyframes poup2{
+	0%{width:120px;height:120px;opacity: 1;}
+	100%{width:140px;height:140px;opacity: 0;}
+}
+@keyframes poup3{
+	0%{width:100px;height:100px;opacity: 1;}
+	100%{width:120px;height:120px;opacity: 0;}
+}
+@-webkit-keyframes poup1{
+	0%{width:140px;height:140px;opacity: 1;}
+	100%{width:160px;height:160px;opacity: 0;}
+}
+@-webkit-keyframes poup2{
+	0%{width:120px;height:120px;opacity: 1;}
+	100%{width:140px;height:140px;opacity: 0;}
+}
+@-webit-keyframes poup3{
+	0%{width:100px;height:100px;opacity: 1;}
+	100%{width:120px;height:120px;opacity: 0;}
+}
+@-ms-keyframes poup1{
+	0%{width:140px;height:140px;opacity: 1;}
+	100%{width:160px;height:160px;opacity: 0;}
+}
+@-ms-keyframes poup2{
+	0%{width:120px;height:120px;opacity: 1;}
+	100%{width:140px;height:140px;opacity: 0;}
+}
+@-ms-keyframes poup3{
+	0%{width:100px;height:100px;opacity: 1;}
+	100%{width:120px;height:120px;opacity: 0;}
+}
+@-o-keyframes poup1{
+	0%{width:140px;height:140px;opacity: 1;}
+	100%{width:160px;height:160px;opacity: 0;}
+}
+@-o-keyframes poup2{
+	0%{width:120px;height:120px;opacity: 1;}
+	100%{width:140px;height:140px;opacity: 0;}
+}
+@-o-keyframes poup3{
+	0%{width:100px;height:100px;opacity: 1;}
+	100%{width:120px;height:120px;opacity: 0;}
+}
+@-moz-keyframes poup1{
+	0%{width:140px;height:140px;opacity: 1;}
+	100%{width:160px;height:160px;opacity: 0;}
+}
+@-moz-keyframes poup2{
+	0%{width:120px;height:120px;opacity: 1;}
+	100%{width:140px;height:140px;opacity: 0;}
+}
+@-moz-keyframes poup3{
+	0%{width:100px;height:100px;opacity: 1;}
+	100%{width:120px;height:120px;opacity: 0;}
+}
+.poup .opacity-div{
+	animation: poup1 1s ease-out infinite;
+	-webkit-animation: poup1 1s ease-out infinite;
+	-moz-animation: poup1 1s ease-out infinite;
+	-o-animation: poup1 1s ease-out infinite;
+	-ms-animation: poup1 1s ease-out infinite;
+}
+.poup .white-div{
+	animation: poup2 1s ease-out infinite;
+	-webkit-animation: poup2 1s ease-out infinite;
+	-moz-animation: poup2 1s ease-out infinite;
+	-o-animation: poup2 1s ease-out infinite;
+	-ms-animation: poup2 1s ease-out infinite;
+}
+.poup .border-div{
+	animation: poup3 1s ease-out infinite;
+	-webkit-animation: poup3 1s ease-out infinite;
+	-moz-animation: poup3 1s ease-out infinite;
+	-o-animation: poup3 1s ease-out infinite;
+	-ms-animation: poup3 1s ease-out infinite;
+}
+@keyframes scan1{
+	0%{width:140px;height:140px;}
+	40%{width:160px;height:160px;}
+	100%{width:140px;height:140px;}
+}
+@keyframes scan2{
+	0%{width:120px;height:120px;}
+	40%{width:140px;height:140px;}
+	100%{width:120px;height:120px;}
+}
+@keyframes scan3{
+	0%{width:100px;height:100px;}
+	40%{width:120px;height:120px;}
+	100%{width:100px;height:100px;}
+}
+@-webit-keyframes scan1{
+	0%{width:140px;height:140px;}
+	40%{width:160px;height:160px;}
+	100%{width:140px;height:140px;}
+}
+@-webkit-keyframes scan2{
+	0%{width:120px;height:120px;}
+	40%{width:140px;height:140px;}
+	100%{width:120px;height:120px;}
+}
+@-webkit-keyframes scan3{
+	0%{width:100px;height:100px;}
+	40%{width:120px;height:120px;}
+	100%{width:100px;height:100px;}
+}
+@-ms-keyframes scan1{
+	0%{width:140px;height:140px;}
+	40%{width:160px;height:160px;}
+	100%{width:140px;height:140px;}
+}
+@-ms-keyframes scan2{
+	0%{width:120px;height:120px;}
+	40%{width:140px;height:140px;}
+	100%{width:120px;height:120px;}
+}
+@-ms-keyframes scan3{
+	0%{width:100px;height:100px;}
+	40%{width:120px;height:120px;}
+	100%{width:100px;height:100px;}
+}
+@-o-keyframes scan1{
+	0%{width:140px;height:140px;}
+	40%{width:160px;height:160px;}
+	100%{width:140px;height:140px;}
+}
+@-o-keyframes scan2{
+	0%{width:120px;height:120px;}
+	40%{width:140px;height:140px;}
+	100%{width:120px;height:120px;}
+}
+@-o-keyframes scan3{
+	0%{width:100px;height:100px;}
+	40%{width:120px;height:120px;}
+	100%{width:100px;height:100px;}
+}
+@-moz-keyframes scan1{
+	0%{width:140px;height:140px;}
+	40%{width:160px;height:160px;}
+	100%{width:140px;height:140px;}
+}
+@-moz-keyframes scan2{
+	0%{width:120px;height:120px;}
+	40%{width:140px;height:140px;}
+	100%{width:120px;height:120px;}
+}
+@-moz-keyframes scan3{
+	0%{width:100px;height:100px;}
+	40%{width:120px;height:120px;}
+	100%{width:100px;height:100px;}
+}
+.scan .opacity-div{
+	animation: scan1 .5s ease-out;
+	-webkit-animation: scan1 .5s ease-out;
+	-moz-animation: scan1 .5s ease-out;
+	-o-animation: scan1 .5s ease-out;
+	-ms-animation: scan1 .5s ease-out;
+}
+.scan .white-div{
+	animation: scan2 .5s ease-out;
+	-webkit-animation: scan2 .5s ease-out;
+	-moz-animation: scan2 .5s ease-out;
+	-o-animation: scan2 .5s ease-out;
+	-ms-animation: scan2 .5s ease-out;
+}
+.scan .border-div{
+	animation: scan3 .5s ease-out;
+	-webkit-animation: scan3 .5s ease-out;
+	-moz-animation: scan3 .5s ease-out;
+	-o-animation: scan3 .5s ease-out;
+	-ms-animation: scan3 .5s ease-out;
+}
+@keyframes opacity1{
+	0%{width:140px;height:140px;opacity: .5;}
+	70%{width:160px;height:160px;opacity: 1;}
+	100%{width:140px;height:140px;opacity: 0;}
+}
+@-webkit-keyframes opacity1{
+	0%{width:140px;height:140px;opacity: .5;}
+	70%{width:160px;height:160px;opacity: 1;}
+	100%{width:140px;height:140px;opacity: 0;}
+}
+@-moz-keyframes opacity1{
+	0%{width:140px;height:140px;opacity: .5;}
+	70%{width:160px;height:160px;opacity: 1;}
+	100%{width:140px;height:140px;opacity: 0;}
+}
+@-o-keyframes opacity1{
+	0%{width:140px;height:140px;opacity: .5;}
+	70%{width:160px;height:160px;opacity: 1;}
+	100%{width:140px;height:140px;opacity: 0;}
+}
+@-ms-keyframes opacity1{
+	0%{width:140px;height:140px;opacity: .5;}
+	70%{width:160px;height:160px;opacity: 1;}
+	100%{width:140px;height:140px;opacity: 0;}
+}
+@keyframes opacity2{
+	0%{width:120px;height:120px;opacity: .4;}
+	50%{width:140px;height:140px;opacity: 1;}
+	70%{width:120px;height:120px;opacity: 0;}
+	100%{opacity:0}
+}
+@-webkit-keyframes opacity2{
+	0%{width:120px;height:120px;opacity: .4;}
+	50%{width:140px;height:140px;opacity: 1;}
+	70%{width:120px;height:120px;opacity: 0;}
+	100%{opacity:0}
+}
+@-ms-keyframes opacity2{
+	0%{width:120px;height:120px;opacity: .4;}
+	50%{width:140px;height:140px;opacity: 1;}
+	70%{width:120px;height:120px;opacity: 0;}
+	100%{opacity:0}
+}
+@-moz-keyframes opacity2{
+	0%{width:120px;height:120px;opacity: .4;}
+	50%{width:140px;height:140px;opacity: 1;}
+	70%{width:120px;height:120px;opacity: 0;}
+	100%{opacity:0}
+}
+@-o-keyframes opacity2{
+	0%{width:120px;height:120px;opacity: .4;}
+	50%{width:140px;height:140px;opacity: 1;}
+	70%{width:120px;height:120px;opacity: 0;}
+	100%{opacity:0}
+}
+@keyframes opacity3{
+	0%{width:100px;height:100px;opacity: .5;}
+	40%{width:120px;height:120px;opacity: 1;}
+	60%{width:100px;height:100px;opacity: 0;}
+	100%{opacity:0}
+}
+@-webkit-keyframes opacity3{
+	0%{width:100px;height:100px;opacity: .5;}
+	40%{width:120px;height:120px;opacity: 1;}
+	60%{width:100px;height:100px;opacity: 0;}
+	100%{opacity:0}
+}
+@-ms-keyframes opacity3{
+	0%{width:100px;height:100px;opacity: .5;}
+	40%{width:120px;height:120px;opacity: 1;}
+	60%{width:100px;height:100px;opacity: 0;}
+	100%{opacity:0}
+}
+@-o-keyframes opacity3{
+	0%{width:100px;height:100px;opacity: .5;}
+	40%{width:120px;height:120px;opacity: 1;}
+	60%{width:100px;height:100px;opacity: 0;}
+	100%{opacity:0}
+}
+@-moz-keyframes opacity3{
+	0%{width:100px;height:100px;opacity: .5;}
+	40%{width:120px;height:120px;opacity: 1;}
+	60%{width:100px;height:100px;opacity: 0;}
+	100%{opacity:0}
+}
+.main-img.animate .opacity-div{
+	animation: opacity1 1.2s ease-out infinite;
+	-webkit-animation: opacity1 1.2s ease-out infinite;
+	-moz-animation: opacity1 1.2s ease-out infinite;
+	-o-animation: opacity1 1.2s ease-out infinite;
+	-ms-animation: opacity1 1.2s ease-out infinite;
+}
+.main-img.animate .white-div{
+	animation: opacity2 1.2s ease-out infinite;
+	-webkit-animation: opacity2 1.2s ease-out infinite;
+	-moz-animation: opacity2 1.2s ease-out infinite;
+	-o-animation: opacity2 1.2s ease-out infinite;
+	-ms-animation: opacity2 1.2s ease-out infinite;
+}
+.main-img.animate .border-div{
+	animation: opacity3 1.2s ease-out infinite;
+	-webkit-animation: opacity3 1.2s ease-out infinite;
+	-moz-animation: opacity3 1.2s ease-out infinite;
+	-o-animation: opacity3 1.2s ease-out infinite;
+	-ms-animation: opacity3 1.2s ease-out infinite;
+}
+@keyframes small{
+	0%{transform: scale(1);}
+	30%{transform: scale(0);}
+	100%{transform: scale(1);}
+}
+@-webkit-keyframes small{
+	0%{-webkit-transform: scale(1);}
+	30%{-webkit-transform: scale(0);}
+	100%{-webkit-transform: scale(1);}
+}
+@-moz-keyframes small{
+	0%{-moz-transform: scale(1);}
+	30%{-moz-transform: scale(0);}
+	100%{-moz-transform: scale(1);}
+}
+@-ms-keyframes small{
+	0%{-ms-transform: scale(1);}
+	30%{-ms-transform: scale(0);}
+	100%{-ms-transform: scale(1);}
+}
+@-o-keyframes small{
+	0%{-o-transform: scale(1);}
+	30%{-o-transform: scale(0);}
+	100%{-o-transform: scale(1);}
+}
+.impress-tag li.small{
+	animation: small .3s ease-out;
+	-webkit-animation: small .3s ease-out;
+	-moz-animation: small .3s ease-out;
+	-o-animation: small .3s ease-out;
+	-ms-animation: small .3s ease-out;
+}
+.main-img .white-div{
+	width:120px;
+	height:120px;
+	background: rgba(255,255,255,0.5);
+}
+.main-img .border-div{
+	width:100px;
+	height:100px;
+	background: rgba(255,255,255,0.5);
+	border:1px solid #fff;
+}
+.impress-tag li .text{
+	display:inline-block;
+	width:50px;
+	position:absolute;
+	left:50%;
+	top:50%;
+	transform: translate(-50%,-50%);
+        -webkit-transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+        -moz-transform: translate(-50%,-50%);
+        -o-transform: translate(-50%,-50%);
+}
+.impress-tag li{
+	list-style: none;
+	position:absolute;
+	border-radius: 50%;
+	background: rgba(0, 0, 0, 0.3);
+	color:white;
+	box-sizing: border-box;
+	width: 70px;
+	height: 70px;
+	font-size: 14px;
+	font-family: "微软雅黑";
+	border:1px solid rgb(162,162,162);
+	text-align: center;
+        line-height:1.1em;
+	box-sizing: border-box;
+	padding:0 10px;
+}
+</style>
+
+</head>
+
+<body>
+	<div id="impression">
+			<div class="impress-bg"></div>
+			<div class="impress-content">
+			<div class="main-img scan">
+				<div class="opacity-div center"></div>
+				<div class="white-div center"></div>
+				<div class="border-div center"></div>
+				<img id="center" class="center" src="http://cctv2.qiniudn.com/jpg.jpg">
+			</div>
+			<ul class="impress-tag" id="single_tags">
+				<li class="small"><span class="text">热情(<span class="count">0</span>)</span></li>
+				<li class="small"><span class="text">大方(<span class="count">0</span>)</span></li>
+				<li class="small"><span class="text">无私(<span class="count">1</span>)</span></li>
+				<li class="small"><span class="text">可怜(<span class="count">1</span>)</span></li>
+				<li class="small"><span class="text">完美主义(<span class="count">2</span>)</span></li>
+				<li class="small"><span class="text">霸气外漏(<span class="count">0</span>)</span></li>
+				<li class="small"><span class="text">低调(<span class="count">2</span>)</span></li>
+			</ul>
+			</div>
+		</div>
+	<script src="http://wuover.qiniudn.com/jquery.js"></script>
+	<script type="text/javascript">
+	/***************************/
+	//尊重劳动成果
+	//版权所有：秋叶
+	//作者博客地址：http://www.mizuiren.com/
+	//转载注明出处，谢谢！
+	/***************************/
+	//原生js实现环形菜单创建
+	function circleLayout(para){
+	    var count=para.targetElement.length;
+	    if(!count||!para.pointElement){
+	        throw new Error("请传入布局元素参数targetElement和pointElement ！");
+	        return false;
+	    }
+	    var beginAngle=para.beginAngle;
+	    var endAngle=para.endAngle;
+	    var validAngle=endAngle-beginAngle;
+	    var angle=validAngle/count;
+	    var X,Y,
+	    pointLeft=typeof para.pointElement==="string"?parseInt(para.pointElement.split(",")[0]):(para.pointElement.offsetLeft+para.pointElement.offsetWidth/2),
+	    pointTop=typeof para.pointElement==="string"?parseInt(para.pointElement.split(",")[1]):(para.pointElement.offsetTop+para.pointElement.offsetHeight/2);
+	    for(var i =0;i<count ;i++){
+	    	var thisElement=para.targetElement[i];
+	        X=parseInt(Math.cos((angle*i+beginAngle)*Math.PI/180)*para.radius+pointLeft);
+	        Y=parseInt(Math.sin((angle*i+beginAngle)*Math.PI/180)*para.radius+pointTop);
+	        thisElement.style.position="absolute";
+	        thisElement.style.left=X-thisElement.offsetWidth/2+"px";
+	        thisElement.style.top=Y-thisElement.offsetHeight/2+"px";
+	    }
+	}
+	//jq印象tag飘动动画实现
+	function smoothMove(){
+		var target={};
+		var li=$(".impress-tag li");
+		li.each(function(i,n){
+			var thisLi=$(n);
+			target[i]=thisLi.position().left+","+thisLi.position().top;
+		});
+		function move(){
+			li.each(function(i,n){
+				var thisLi=$(n);
+				var multiplier=[1,-1];
+				var targetLeft=multiplier[parseInt(Math.random()*2)]*Math.random()*20+parseInt(target[i].split(",")[0]);
+				var targetTop=multiplier[parseInt(Math.random()*2)]*Math.random()*20+parseInt(target[i].split(",")[1]);
+				if(!$(n).hasClass("stop")){
+					thisLi.stop().animate({
+						left:targetLeft+"px",
+						top:targetTop+"px"
+					},3000,move);
+				}
+			});
+		}
+		move();
+	}
+	//jq投票事件特效
+	function addImpress(){
+		var li=$("#single_tags li");
+		var main=$(".main-img");
+		var impress=$("#impression");
+		var hasAdd=false;
+		var img=$("#center"),
+				centerW=img.width(),
+				centerH=img.height(),
+				centerX=img.offset().left+centerW/2,
+				centerY=img.offset().top+centerH/2;
+		li.mousedown(function(e){
+			var ev=e||window.event;
+			var _this=this;
+			hasAdd=false;
+			var thisWidth=$(_this).width(),
+					thisHeight=$(_this).height();
+			$(this).stop().addClass("stop");
+			main.addClass("animate");
+			main.removeClass("scan");
+			$(_this).removeClass("small");
+			var x=$(_this).offset().left,
+					y=$(_this).offset().top,
+					parentX=impress.offset().left,
+					parentY=impress.offset().top;
+			var mouseX=ev.pageX,
+					mouseY=ev.pageY;
+			var x_x=mouseX-x,
+					y_y=mouseY-y;
+			$(document).mousemove(function(e){
+				var ev=e||window.event;
+				var moveX=ev.pageX,
+						moveY=ev.pageY;
+				var left=moveX-x_x,
+						top=moveY-y_y;
+				$(_this).css({
+					"left":left-parentX+"px",
+					"top":top-parentY+"px"
+				});
+				var distance=Math.sqrt(Math.pow((left+thisWidth/2-centerX),2)+Math.pow((top+thisHeight/2-centerY),2));
+				if(distance<(thisWidth/2+centerW/2)){
+					main.addClass("poup");
+					main.removeClass("animate");
+					hasAdd=true;
+				}else{
+					main.removeClass("poup");
+					main.addClass("animate");
+					hasAdd=false;
+				}
+				return false;
+			});
+			$(document).mouseup(function(){
+				$(_this).animate({left:x-parentX,top:y-parentY},1000,function(){
+					$(_this).removeClass("stop")
+				});
+				var numContainer=$(_this).find(".count");
+				var num=parseInt(numContainer.text());
+				if(hasAdd){
+					$(_this).addClass("small");
+					numContainer.text(++num);
+				}
+				main.removeClass("animate");
+				main.removeClass("poup");
+				main.addClass("scan");
+				$(document).off("mousemove").off("mouseup");
+			});
+		});
+	}
+	function init(){
+		circleLayout({
+		    pointElement:"200,250",//document.getElementById("center"),
+		    targetElement:document.getElementById("single_tags").getElementsByTagName("li"),
+		    radius:150,
+		    beginAngle:0,
+		    endAngle:360
+		});
+		smoothMove();
+		addImpress();
+	}
+	init();
+	</script>
+
+</body>
+</html>

@@ -36,7 +36,7 @@
 			您的浏览器不支持canvas，请更换高级版的浏览器！
 		</canvas>
 		<br/>
-		<audio src="http:cctv3.qiniudn.com/hl.mp3" controls="controls" autoplay="autoplay" id="mp3" crossOrigin="anonymous"></audio>
+		<audio src="http://cctv3.qiniudn.com/hl.mp3" controls="controls" autoplay="autoplay" id="mp3" crossOrigin="anonymous"></audio>
 	</div>
 <div id="swith-btn">
 	<span><input type="radio" name="drawstyle" value="1" checked="checked">柱状</span>
@@ -61,8 +61,8 @@
  	}
 	var analyser = audioContext.createAnalyser(),
 			source = audioContext.createMediaElementSource(audio);
-			analyser.connect(audioContext.destination);//声音连接到扬声器
 			source.connect(analyser);//截取音频信号
+			analyser.connect(audioContext.destination);//声音连接到扬声器
 
 	function getSource(draw){
 		if(audio.paused){
@@ -71,7 +71,7 @@
 		var data = new Uint8Array(analyser.frequencyBinCount);
 				analyser.getByteFrequencyData(data);//得到音频能量值
 		var playerTimeDomainData = new Uint8Array(analyser.fftSize);
-				analyser.getByteTimeDomainData(playerTimeDomainData);
+				analyser.getByteTimeDomainData(playerTimeDomainData);//得到频谱
 		var volumn = Math.max.apply(null, playerTimeDomainData) -Math.min.apply(null, playerTimeDomainData);
 		context.clearRect(0, 0, width, height);
 		switch (parseInt(draw)) {
@@ -398,7 +398,6 @@
 		addEvent();
 		timer=setInterval(function(){getSource(1)},10);
 	}
-
 	init();
 
 })();
