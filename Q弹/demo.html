@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Q弹</title>
+	<link rel="stylesheet" href="./style.css"></link>
+</head>
+<body>
+<div id="q-tan" class="animated" style="width: 100px;height:100px;background: red;animation-duration: 1000ms;"></div>
+<script type="text/javascript">
+	var timer;
+	document.onclick = function() {
+		var qTan = document.querySelector('#q-tan');
+		var _class = qTan.className.split(' ');
+		if(timer) {
+			clearTimeout(timer);
+			timer = null;
+			var index = _class.indexOf('jello');
+			if(index > -1) {
+				_class.splice(index, 1);
+			}
+			qTan.className = _class.join(' ');
+			return;
+		}
+		_class.push('jello');
+		qTan.className = _class.join(' ');
+		
+		timer = setTimeout(function() {
+			var index = _class.indexOf('jello');
+			if(index > -1) {
+				_class.splice(index, 1);
+			}
+			qTan.className = _class.join(' ');
+			timer = null;
+		}, 1000);
+	}
+</script>
+</body>
+</html>
